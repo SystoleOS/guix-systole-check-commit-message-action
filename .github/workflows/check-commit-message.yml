@@ -1,0 +1,27 @@
+name: "Commit Message Check"
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  check-commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository to ensure the step below has access to action source code.
+      - uses: actions/checkout@v4
+
+      # Run the commit message validation action using the source code checked out in the previous step.
+      - uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
