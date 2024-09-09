@@ -8,7 +8,7 @@ guidelines.
 
 To automatically enforce the Slicer commit message style during pull requests or
 pushes to the `main` branch, create a workflow file at
-`.github/workflows/check-commit-message.yml` with the following content:
+`.github/workflows/commit-message.yml` with the following content:
 
 ```yaml
 name: "Commit Message Check"
