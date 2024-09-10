@@ -29,10 +29,12 @@ permissions:
 
 jobs:
   check-commit-message:
-    name: Check Commit Message
-    uses: slicer/slicer-check-commit-message-action@v1.0.0
-    with:
-      token: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Commit Message
+        uses: slicer/slicer-check-commit-message-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 This workflow will trigger commit message checks on relevant pull request events
