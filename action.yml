@@ -11,16 +11,16 @@ runs:
     - name: Check Commit Prefix
       uses: gsactions/commit-message-checker@16fa2d5de096ae0d35626443bcd24f1e756cafee # v2.0.0
       with:
-        pattern: "^(ENH|PERF|BUG|STYLE|DOC|COMP): ([A-Z])+"
+        pattern: '^(?:\[(STYLE|DOC|ENH|BUG|WIP)\]\[[^\]]+\]\s+.+)(?=\n|$)'
         flags: "gm"
         excludeDescription: "true" # optional: this excludes the description body of a pull request
         excludeTitle: "true" # optional: this excludes the title of a pull request
         error:
-          'The first line has to start with a commit prefix, followed by a colon
+          'The first line has to start with a commit prefix enclosed in square brackets (e.g., [ENH]), followed by a component in square brackets (e.g., [packages/vtk])
           and space, and then followed by a message with a capital letter (e.g
-          "ENH: Add support for awesome feature"). For more details on other
+          "[ENH][packages/vtk] Add support for awesome feature"). For more details on other
           requirements, see
-          https://slicer.readthedocs.io/en/latest/developer_guide/style_guide.html#commits'
+          https://github.com/SystoleOS/guix-systole'
         checkAllCommitMessages: "true" # optional: this checks all commits associated with a pull request
         accessToken: ${{ inputs.token }} # github access token is only required if checkAllCommitMessages is true
 
